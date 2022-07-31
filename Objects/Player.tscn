@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Leo/MOVE/NANA_MOVE_03.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Leo/IDLE/NANA_IDLE_01.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Gun.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Leo/JUMP_FALL/NANA_fall.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Leo/MOVE/NANA_MOVE_01.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Leo/MOVE/NANA_MOVE_02.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Leo/IDLE/NANA_IDLE_02.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Leo/JUMP_FALL/NANA_Jump_Bedit.png" type="Texture" id=9]
+[ext_resource path="res://Assets/sGun.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.5, 24 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 13.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2( -1.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 8 )
+animation = "Idle"
+playing = true
+
+[node name="Gun" type="Sprite" parent="."]
+position = Vector2( -2, 3 )
+scale = Vector2( 0.75, 0.5 )
+texture = ExtResource( 10 )
+offset = Vector2( 6, 0 )
+script = ExtResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="Gun"]
+position = Vector2( 18.6667, 0 )
