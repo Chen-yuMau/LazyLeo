@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Leo/MOVE/NANA_MOVE_03.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Player.gd" type="Script" id=2]
@@ -16,16 +16,6 @@ extents = Vector2( 13.5, 24 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Run",
@@ -35,7 +25,37 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 1.0
 } ]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Node
+
+onready var camera = get_parent()
+var time = 0
+
+
+func _shake(duration := 0.8, magnitude := 8):
+	while time < duration:
+		time += get_process_delta_time()
+		time = min(time, duration)
+		var offset = Vector2()
+		offset.x = rand_range(-magnitude, magnitude)
+		offset.y = rand_range(-magnitude, magnitude)
+		camera.set_offset(offset)
+		yield(get_tree(),\"idle_frame\")
+	time = 0
+	camera.set_offset(Vector2.ZERO)
+"
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -56,5 +76,14 @@ texture = ExtResource( 10 )
 offset = Vector2( 6, 0 )
 script = ExtResource( 4 )
 
-[node name="Position2D" type="Position2D" parent="Gun"]
+[node name="Muzzle" type="Position2D" parent="Gun"]
 position = Vector2( 18.6667, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[node name="screen_shaker" type="Node" parent="Camera2D"]
+script = SubResource( 9 )

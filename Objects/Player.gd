@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var screen_shaker = $Camera2D/screen_shaker
 var move = Vector2()
 var speed = 200
 var jump_speed = -400
