@@ -21,6 +21,21 @@ extents = Vector2( 13.5, 20.25 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 13.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Step",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Fall",
@@ -30,21 +45,6 @@ animations = [ {
 "loop": true,
 "name": "Jump",
 "speed": 1.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Run",
-"speed": 13.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "Step",
-"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -55,6 +55,7 @@ position = Vector2( 0, 0.25 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -26 )
 frames = SubResource( 8 )
 animation = "Step"
 frame = 5
