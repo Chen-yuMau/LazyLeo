@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var screen_shaker = $Camera2D/screen_shaker
 var last_dir = 1
 var forgiveness_radius = 0.2 #Cannot be more than 0.5
-var bps = 2.0
+var bps = 1.02835
 var blt = (1-forgiveness_radius)*(1/bps)
 var bht = forgiveness_radius*(1/bps)
 var beatlowerthreshold = blt
@@ -25,6 +25,9 @@ onready var under = pos_ontile+Vector2(0,1)
 onready var left = pos_ontile+Vector2(-1,0)
 onready var right = pos_ontile+Vector2(1,0)
 
+func _ready():
+	$AudioStreamPlayer2D.play()
+	
 func has_tile(T):
 	return(get_parent().get_cellv(T)!=(-1))
 func _physics_process(delta):
@@ -45,7 +48,6 @@ func _physics_process(delta):
 	k+=delta
 	if k>(1/bps):
 		k = 0
-		$AudioStreamPlayer2D.play()
 	#beatlowerthreshold = (blt)+avdelay
 	while beatlowerthreshold > (1/bps):
 		beatlowerthreshold-=(1/bps)

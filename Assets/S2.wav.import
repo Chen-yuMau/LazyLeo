@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/S2.wav-b7adac7e00f59ab9c9e4b61b25c3e289.sample"
+
+[deps]
+
+source_file="res://Assets/S2.wav"
+dest_files=[ "res://.import/S2.wav-b7adac7e00f59ab9c9e4b61b25c3e289.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

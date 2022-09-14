@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/Leo/IDLE/NANA_IDLE_02.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Leo/JUMP_FALL/NANA_Jump_Bedit.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Leo/MOVE-20220806T051723Z-001/MOVE/2.png" type="Texture" id=10]
-[ext_resource path="res://Assets/1secclick.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/S2.wav" type="AudioStream" id=11]
 [ext_resource path="res://Assets/Leo/MOVE-20220806T051723Z-001/MOVE/3.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Leo/MOVE-20220806T051723Z-001/MOVE/4.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Leo/MOVE-20220806T051723Z-001/MOVE/5.png" type="Texture" id=14]
@@ -21,15 +21,15 @@ extents = Vector2( 13.5, 20.25 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Run",
 "speed": 13.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
@@ -58,7 +58,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -26 )
 frames = SubResource( 8 )
 animation = "Step"
-frame = 5
+frame = 1
 playing = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
